@@ -11,13 +11,19 @@ pipeline{
 
         stage('Build image'){
             steps{
-                bat "docker build -t=auguor98/selenium ."
+                bat "docker build -t=auguor98/selenium:latest ."
             }
         }
 
         stage('Push image'){
+            environment{
+                DOCKER_HUB = credentials('Docker_Main')
+            }
             steps{
-                bat "docker push auguor98/selenium"
+                bat 'echo %DOCKER_HUB_PSW% | docker login -u %DOCKER_HUB_USR% --password-stdin'
+                bat "docker push auguor98/selenium:latest"
+                bat "docker tag auguor98/selenium:latest auguor98/selenium:${env.BUILD_NUMBER}"
+                bat "docker push auguor98/selenium:${env.BUILD_NUMBER}"
             }
             
         }
@@ -25,7 +31,7 @@ pipeline{
 
     post{
         always{
-            echo "doing clean up"
+            bat "docker logout"
         }
     }
 
