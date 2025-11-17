@@ -1,0 +1,10 @@
+com\pages\vendorportal\LoginPage.class
+com\pages\flightreservation\RegistrationPage.class
+com\pages\vendorportal\DashboardPage.class
+com\pages\flightreservation\FlightConfirmationPage.class
+com\pages\flightreservation\DriverSight.class
+com\pages\vendorportal\model\VendorPortalTestData.class
+com\pages\AbstractPage.class
+com\pages\flightreservation\FlightsSelectionPage.class
+com\pages\flightreservation\RegistrationConfirmationPage.class
+com\pages\flightreservation\FlightsSearchPage.class
